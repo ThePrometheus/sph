@@ -1,3 +1,19 @@
+$(document).ready(function(){
+    
+myStorage = window.localStorage;
+for (var i =41;i<=101;i++){
+    myStorage.setItem(i,0);
+}
+    
+    $(".slider").slider({
+        stop:function(event,ui){
+            myStorage.setItem(event.target.id,ui.value);
+            
+        }
+    });
+
+
+
 $('#save_button').on('submit', function(event){
     alert("AHAHA");
    
@@ -19,11 +35,17 @@ gender=$("input:radio[name='gender']:checked").val();
     expenditures = $("input[type='radio'][name='money']:checked").val();
     occupation = $("input[type='radio'][name='job']:checked").val();
     
-    alert(expenditures);
+    // data sent with the post request
+
+        // handle a successful response
+   
+    var data ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,storage:myStorage};
+
+   
      $.ajax({
         url : "/person/new/", // the endpoint
         type : "POST", // http method
-        data : { gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation}, // data sent with the post request
+        data : JSON.stringify(data), // data sent with the post request
 
         // handle a successful response
         success : function(json) {
@@ -39,3 +61,8 @@ gender=$("input:radio[name='gender']:checked").val();
         }
     });
 };
+    
+    
+    
+    
+    });

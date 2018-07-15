@@ -11,7 +11,7 @@
   };
 
   // Init slider
-  $("div[id^='slider_']").slider({
+  $(".slider").slider({
     range: "min",
     max: 100,
     value: 50,
