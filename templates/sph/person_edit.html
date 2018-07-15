@@ -6,7 +6,7 @@
       <div class = "container">
      
           
-    <form action="" method="POST" class="person-form">{% csrf_token %}
+  <input type ="hidden" id="csrf_token" value="{% csrf_token %}"  >
     <div class="persona_gender">
         <div class="row">
              <div class="col-md-2 col-xs-2 col-lg-2">
@@ -138,9 +138,9 @@
 
 
         <div class="text-center">
-            <button type="submit" id = "save_button" class="save btn btn-default btn-md">Відправити </button>
+            <button  id = "save_button" class="save btn btn-default btn-md">Відправити </button>
             </div>
-        </form>
+        
 
     </div>
 
