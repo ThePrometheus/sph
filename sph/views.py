@@ -51,9 +51,8 @@ class PersonView(generic.DetailView):
             p_occupation=request.POST.get('job')
             p_city=City.objects.get(id=10)
             person = Person(city=p_city, gender=p_gender,family_status=p_family_status,age=p_age,education=p_education,expenditures=p_expenditures,occupation=p_occupation)
-            p_storage = request.POST.get('storage')
-            for p in p_storage:
-                print(":"+p)
+            p_storage = request.POST.getlist('questions')
+            print(p_storage)
             
             
             

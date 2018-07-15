@@ -15,9 +15,7 @@ for (var i =41;i<=101;i++){
 
 
 $('#save_button').on('submit', function(event){
-    alert("AHAHA");
-   
-    console.log("form submitted!");  // sanity check
+    
     create_person();
 });
 
@@ -42,13 +40,13 @@ gender=$("input:radio[name='gender']:checked").val();
    Object.keys(myStorage).forEach(function(key){
    list[key]=myStorage.getItem(key);
 });
-    var data ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,storage:list};
-
-   
+    var temp ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,questions:list};
+    var data = JSON.stringify(temp);
+    alert(data);
      $.ajax({
         url : "/person/new/", // the endpoint
         type : "POST", // http method
-        data : JSON.stringify(data), // data sent with the post request
+        data : data, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
