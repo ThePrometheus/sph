@@ -38,8 +38,11 @@ gender=$("input:radio[name='gender']:checked").val();
     // data sent with the post request
 
         // handle a successful response
-   
-    var data ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,storage:myStorage};
+   var list = []
+   Object.keys(myStorage).forEach(function(key){
+   list[key]=myStorage.getItem(key);
+});
+    var data ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,storage:list};
 
    
      $.ajax({

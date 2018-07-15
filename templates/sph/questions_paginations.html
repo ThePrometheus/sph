@@ -25,6 +25,13 @@
           {% endfor %}
         <script src="{% static 'sph/slider.js' %}"></script>
         </div>
+{% if not questions.has_next %}
+ <div class="text-center">
+           <a href = "/sph/person/new"> <button type="submit" id = "end_button" class="save btn btn-default btn-lg">Закінчити  тест </button>
+               </a>
+            </div>
+{%endif%}
+
 <div class = "container text-center footer">
 <div class="pagination">
     <span class="step-links">
@@ -39,7 +46,7 @@
 
         {% if questions.has_next %}
             <a href="?page={{ questions.next_page_number }}">Наступне</a>
-            <a href="?page={{ questions.paginator.num_pages }}">Попереднє &raquo;</a>
+            <a href="?page={{ questions.paginator.num_pages }}">Остання &raquo;</a>
         {% endif %}
     </span>
 </div>

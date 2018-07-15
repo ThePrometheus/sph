@@ -42,16 +42,18 @@ class PersonView(generic.DetailView):
     template_name = 'sph/person_edit.html'
     def person_new(request):
         if request.method=='POST':
-            print("FUCK")
+            
             p_gender=request.POST.get('gender')
             p_family_status= request.POST.get('family')
             p_age = request.POST.get('age')
             p_education = request.POST.get('education')
             p_expenditures=request.POST.get('money')
-            print(p_expenditures)
             p_occupation=request.POST.get('job')
             p_city=City.objects.get(id=10)
             person = Person(city=p_city, gender=p_gender,family_status=p_family_status,age=p_age,education=p_education,expenditures=p_expenditures,occupation=p_occupation)
+            p_storage = request.POST.get('storage')
+            for p in p_storage:
+                print(":"+p)
             
             
             
