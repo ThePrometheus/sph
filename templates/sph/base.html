@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'sph/questions.css' %}">
+<script src="{% static 'sph/slider.js' %}">
+</script>
+<script src="{% static 'sph/main.js' %}"></script>
+<!-- Menu top  -->
+
+<!-- Body part -->
+
+
+<div class="container-fluid">
+
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/sph/home">Sphinx</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/sph/slider">Test</a></li>
+      <li><a href="{% url 'person_new' %}">Questionnaire</a></li>
+      <li><a href="#">Results</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/admin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/admin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+    
+    
+ {% block content %}
+                    {% endblock %}
+
+ </div>
+
+
+    
+
+
+   

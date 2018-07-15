@@ -1,0 +1,32 @@
+    {% extends 'sph/base.html' %}
+    {% load staticfiles %}
+    {% block content %} 
+    <h1> </h1>
+
+    {% for question in object_list %}
+
+
+        <div id="question_block_{{question.id}}">
+           <div class ="row">
+         <div class = "col-md-4 col-xs-4 col-lg-4 text-justify  ">{{question.question_text}}</div>
+               <div class="slider-container">
+               <div class = "col-md-4 col-xs-4 col-lg-4  ">
+
+        <div id="slider_{{question_id}}">
+
+            </div>
+               <div class="text-justify" >  Оберіть наскільки ви погоджуєтесь з кожним твердженням</div>
+            </div>
+            </div>
+
+         <div class = "col-md-4 col-xs-4 col-lg-4 text-justify  ">{{question.second_question_text}}</div>
+         </div>
+
+          {% endfor %}
+        <script src="{% static 'sph/slider.js' %}"></script>
+        </div>
+
+
+    {%endblock %}
+
+

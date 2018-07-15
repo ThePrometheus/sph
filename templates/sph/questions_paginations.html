@@ -1,0 +1,53 @@
+    {% extends 'sph/base.html' %}
+    {% load staticfiles %}
+    {% block content %} 
+    <h1> </h1>
+
+    {% for question in questions %}
+
+
+        <div id="question_block_{{question.id}}">
+           <div class ="row">
+         <div class = "col-md-4 col-xs-4 col-lg-4 text-justify  ">{{question.question_text}}</div>
+               <div class="slider-container">
+               <div class = "col-md-4 col-xs-4 col-lg-4  ">
+
+        <div id="slider_{{question_id}}">
+
+            </div>
+               <div class="text-justify" >  Оберіть наскільки ви погоджуєтесь з кожним твердженням</div>
+            </div>
+            </div>
+
+         <div class = "col-md-4 col-xs-4 col-lg-4 text-justify  ">{{question.second_question_text}}</div>
+         </div>
+
+          {% endfor %}
+        <script src="{% static 'sph/slider.js' %}"></script>
+        </div>
+<div class = "container text-center footer">
+<div class="pagination">
+    <span class="step-links">
+        {% if questions.has_previous %}
+            <a href="?page=1">&laquo; До початку</a>
+            <a href="?page={{ questions.previous_page_number }}">Попереднє</a>
+        {% endif %}
+
+        <span class="current">
+            Сторінка {{ questions.number }} з {{ questions.paginator.num_pages }}.
+        </span>
+
+        {% if questions.has_next %}
+            <a href="?page={{ questions.next_page_number }}">Наступне</a>
+            <a href="?page={{ questions.paginator.num_pages }}">Попереднє &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+    </div>
+
+    {%endblock %}
+
+
+
+
+
