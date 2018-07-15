@@ -46,6 +46,19 @@ OCCUPATION = (
             ('Пенсіонер(-ка)','retired'),
             ('имчасово безробітній(-ня)','unemployed')
             )
+BLOCKS = (
+    ('Політичний','політичний'),
+    ('Економічний','економічний'),
+    ('Соціальний','соціальний'),
+
+
+
+)
+TYPES = (
+    ('LC','liberal conservative'),
+    ('CS','conservative social'),
+    ('SN','social national')
+)
 
 
 
@@ -77,6 +90,9 @@ class Person(models.Model):
     
     
 class Question(models.Model):
+    block = models.CharField(max_length=100, default='Політичний', choices=BLOCKS)
+    tag_id = models.IntegerField(default=0)
+    type_block = models.CharField(max_length=100,default='LC',choices=TYPES)
     question_text = models.TextField()
     second_question_text = models.TextField(default="Second question",blank=True,null=True)
 
@@ -93,14 +109,18 @@ class Question(models.Model):
     
 
 class Answer(models.Model):
-    liberal_conservative = models.FloatField()
-    conservative_national = models.FloatField()
-    national_liberal = models.FloatField()
+    liberal_conservative = models.FloatField(default=0.0)
+    conservative_social = models.FloatField(default=0.0)
+    conservative_national= models.FloatField(default=0.0)
+    liberal_social=models.FloatField(default=0.0)
+    liberal_national=models.FloatField(default=0.0)
+    social_national = models.FloatField(default=0.0)
+    
 
     def __str__(self):
-        return "LC:"+liberal_conservative+":CN:"+conservative_national+":NL:"+national_liberal
+        return "LC:"+self.liberal_conservative+":CN:"+self.conservative_national+":NL:"+self.liberal_national
 
-    question = models.ForeignKey(Question,on_delete = models.CASCADE)
+    questions = models.ManyToManyField(Question)
     person = models.ForeignKey(Person, on_delete= models.CASCADE)
 
 

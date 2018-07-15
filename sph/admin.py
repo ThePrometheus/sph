@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Region, City,Person,Question,Answer 
 
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ['question_text','second_question_text']
+    fields = ['question_text','second_question_text','block','tag_id','type_block']
 
 admin.site.register(Question, QuestionAdmin)
 
