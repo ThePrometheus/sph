@@ -83,10 +83,10 @@ class Person(models.Model):
     city = models.ForeignKey(City,default=1,on_delete=models.CASCADE)
     gender = models.CharField(max_length=100,default='чоловіча',choices=GENDER)
     family_status=models.CharField(max_length=100,default='married',choices=FAMILY_STATUS)
-    age = models.CharField(max_length=100,default='1',choices=AGE)
-    education = models.CharField(max_length=100,default='1',choices=EDUCATION)
-    expenditures = models.CharField(max_length=100,default='1',choices=EXPENDITURES)
-    occupation = models.CharField(max_length=100,default='1',choices=OCCUPATION)
+    age = models.CharField(max_length=100,default='25-29',choices=AGE)
+    education = models.CharField(max_length=100,default='Початкова загальна освіта',choices=EDUCATION)
+    expenditures = models.CharField(max_length=100,default='3,000 - 4,500 грн.',choices=EXPENDITURES)
+    occupation = models.CharField(max_length=100,default='Власник(-ця) бізнесу, юридична особа',choices=OCCUPATION)
     
     
 class Question(models.Model):
@@ -97,7 +97,7 @@ class Question(models.Model):
     second_question_text = models.TextField(default="Second question",blank=True,null=True)
 
     def __str__(self):
-        return self.question_text
+        return ("ID:"+str(self.id)+self.question_text)
     def get_first_question(self):
         return self.question_text
 
@@ -118,7 +118,7 @@ class Answer(models.Model):
     
 
     def __str__(self):
-        return "LC:"+self.liberal_conservative+":CN:"+self.conservative_national+":NL:"+self.liberal_national
+        return ("ID:"+str(self.id)+"LC:"+str(self.liberal_conservative)+":CN:"+str(self.conservative_national)+":NL:"+str(self.liberal_national))
 
     questions = models.ManyToManyField(Question)
     person = models.ForeignKey(Person, on_delete= models.CASCADE)
