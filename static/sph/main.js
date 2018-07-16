@@ -1,20 +1,20 @@
-myStorage = window.localStorage;
-for (var i =41;i<=101;i++){
-    myStorage.setItem(i,0);
-}
-$(document).ready(function(){
-    
+ 
 
+
+$(document).ready(function(){
+   
+ myStorage= window.localStorage;
+    
     
     $(".slider").slider({
         stop:function(event,ui){
             var pos=0;
             if (ui.value>50){
-                pos=(ui.value-50)+((ui.value-50)*2);
+                pos=(ui.value-50)*2;
             }if(ui.value<=50){
-                pos=(ui.value-50)-((50-ui.value)*2);
+                pos=(ui.value)-((50-ui.value)*2);
             }
-            myStorage.setItem(event.target.id,ui.value);
+            myStorage.setItem(event.target.id,pos);
             
         }
     });
@@ -45,16 +45,16 @@ gender=$("input:radio[name='gender']:checked").val();
     // data sent with the post request
 
         // handle a successful response
-   var list = [];
+   var list = {};
    Object.keys(myStorage).sort().forEach(function(key){
-   list.push(key,myStorage.getItem(key));
+   list[key]=myStorage.getItem(key);
    
     console.log(list);
     
     
 });
     var temp ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,questions:list};
-    var data = temp;
+    var data = JSON.stringify(temp);
     console.log(data);
    
      $.ajax({
