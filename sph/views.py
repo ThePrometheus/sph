@@ -87,7 +87,7 @@ class PersonView(generic.DetailView):
             for b_key,b_value in BLOCKS:
                 for i in range(1,8):
                     answer=Answer.objects.create(person=person)
-                    answer.save()
+                    
                     
                     lc=0
                     cs=0
