@@ -32,15 +32,17 @@ var education;
 var age;
 var expenditures;
 var occupation;
+var city;
 function create_person(){
 gender=$("input:radio[name='gender']:checked").val();
     family = $("input[type='radio'][name='family']:checked").val();
     age = $("input[type='radio'][name='age']:checked").val();
+    city = $('#city').find(":selected").val();
     
     education = $("input[type='radio'][name='education']:checked").val();
     expenditures = $("input[type='radio'][name='money']:checked").val();
     occupation = $("input[type='radio'][name='occupation']:checked").val();
-    alert(occupation);
+    //alert(occupation);
     
     // data sent with the post request
 
@@ -53,7 +55,7 @@ gender=$("input:radio[name='gender']:checked").val();
     
     
 });
-    var temp ={ gender:gender,family:family,age:age,education:education,expenditures:expenditures,occupation:occupation,questions:list};
+    var temp ={ gender:gender,family:family,age:age,city:city,education:education,expenditures:expenditures,occupation:occupation,questions:list};
     var data = JSON.stringify(temp);
     console.log(data);
    

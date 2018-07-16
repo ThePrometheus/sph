@@ -9,6 +9,10 @@ div[id^='slider_'] {
     
     
 }
+select {
+display: block;
+margin: 0 auto;
+}
 .options{
     font-size:20px;
 }

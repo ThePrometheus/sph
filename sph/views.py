@@ -86,6 +86,8 @@ def results(request):
 
 
 def saver(request):
+	
+	print(city_set)
 	if request.method=='POST':
 			
 			
@@ -104,8 +106,13 @@ def saver(request):
 			
 			person.save()
 	else:
-			person = PersonForm()
-	return render(request,'sph/person_edit.html',{'person':person})
+			
+			
+
+			return render(request,'sph/person_edit.html',{'cities':city_set})
+	print("FINE")	
+	'''person = PersonForm()'''
+	return render(request,'sph/person_edit.html',{'cities':city_set})
 	
 
 
@@ -136,8 +143,10 @@ class QuestionView(generic.ListView):
 class PersonView(generic.DetailView):
 	model = Person
 	template_name = 'sph/person_edit.html'
+	
 	@csrf_exempt
 	def person_new(request):
+		city_set = City.objects.all()
 		if request.method=='POST':
 			data=json.loads(request.body)
 			
@@ -149,7 +158,8 @@ class PersonView(generic.DetailView):
 			p_education = data['education']
 			p_expenditures= data['expenditures']
 			p_occupation= data['occupation']
-			p_city=City.objects.get(id=10)
+			p_city_id = data['city']
+			p_city=City.objects.get(id=p_city_id)
 			person = Person(city=p_city, gender=p_gender,family_status=p_family_status,age=p_age,education=p_education,expenditures=p_expenditures,occupation=p_occupation)
 			p_storage = data['questions']
 			
@@ -212,7 +222,8 @@ class PersonView(generic.DetailView):
 			
 			
 		else:
-			person = PersonForm()
+			return render(request,'sph/person_edit.html',{'cities':city_set})
+			'''person = PersonForm()'''
 		return render(request,'sph/person_edit.html',{'person':person})
 	
 

@@ -19,12 +19,29 @@
              <div class="col-md-2 col-xs-2 col-lg-2">
     </div>
             </div>
+
 <div class="gender_question">
         <input type="radio" value="Жіночий" name="gender">Жіночий
        <input type="radio" value="Чоловічий" name="gender" checked>Чоловічий
        <input type="radio" value="Інше" name="gender">Інше
     </div>
           </div>
+<div class="persona_city">
+          <div class="row" id = "city">
+           
+             <div class="col-md-2 col-xs-2 col-lg-2">
+    </div>
+    <div class="col-md-8 col-xs-8 col-lg-8">
+      <div class="persona text-center">Вкажіть Ваше місто
+        </div>
+            <select>
+            {% for city in cities %}
+            <option value={{city.pk}}>{{ city.city_name}}</option>
+            {% endfor %}
+            </select>
+            </div>
+            </div>
+            </div>
 
     <div  class="persona_married">
             <div class="row">
