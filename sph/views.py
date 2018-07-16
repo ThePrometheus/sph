@@ -152,7 +152,7 @@ class PersonView(generic.DetailView):
 			
 			p_gender=data['gender']
 			p_family_status= data['family']
-			print(p_family_status)
+			
 			p_age = data['age']
 			
 			p_education = data['education']
@@ -164,7 +164,7 @@ class PersonView(generic.DetailView):
 			p_storage = data['questions']
 			
 			person.save()
-			print(p_storage)
+			
 			
 			
 			for b_key,b_value in BLOCKS:
@@ -183,19 +183,19 @@ class PersonView(generic.DetailView):
 					for obj in question_set:
 						if obj.type_block=='LC':
 							lc=float(p_storage[str(obj.id)])
-							print("LC:"+str(lc))
+							
 							answer.questions.add(obj)
 				   
 				   
 						elif obj.type_block=='CS':
 							cs=float(p_storage[str(obj.id)])
-							print("CS:"+str(cs))
+							
 							answer.questions.add(obj)
 					
 					
 						else:
 							sn=float(p_storage[str(obj.id)])
-							print("SN:"+str(sn))
+							
 							answer.questions.add(obj)
 					ls=abs(lc)+abs(cs)
 					cn=abs(cs)+abs(sn)
@@ -206,7 +206,7 @@ class PersonView(generic.DetailView):
 					answer.liberal_national=ln
 					answer.social_national=sn
 					answer.conservative_national=cn
-					print(answer.questions.all())
+					
 					answer.save()
 					
 					
