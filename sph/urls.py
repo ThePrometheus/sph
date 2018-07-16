@@ -9,5 +9,6 @@ urlpatterns = [
     path('saver',views.saver,name='saver'),
         path('questions',views.QuestionView.as_view(), name='questions_list'),
     path('person/new/', views.PersonView.person_new, name='person_new'),
+    path('results',views.results, name='results')
     
         ]
